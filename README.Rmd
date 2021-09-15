@@ -1,0 +1,142 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = FALSE
+)
+
+library(magrittr)
+
+main_repo <- "main-faxina"
+turma <- "202110-faxina"
+num_aula <- 0
+```
+
+```{r faxina, fig.cap="Imagem de Allison Horst.", out.width="100%", echo=FALSE, dpi = 300}
+knitr::include_graphics("https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/tidydata_3.jpg")
+```
+
+> Quando trabalhamos com dados tidy (arrumados), podemos utilizar as __mesmas ferramentas__, de formas __similares__, em bases de dados diferentes...
+
+> ... porém, quando trabalhamos com bases de dados untidy (desarrumadas), muitas vezes precisamos __reinventar a roda__: desenvolvemos uma solução que muitas vezes é difícil de __iterar ou reutilizar__.
+
+-- (tradução livre, thanks to [Beatriz Milz](beatrizmilz.com/))
+
+## Informações importantes
+
+- [Clique aqui](https://github.com/curso-r/main-faxina/raw/master/material_do_curso.zip) para baixar o material do curso.
+
+- Os **pacotes necessários** no curso e o código para instalação estão disponíveis [neste link](https://curso-r.github.io/main-faxina#pacotes-necess%C3%A1rios).
+
+- Nosso livro **Ciência de Dados em R**: [https://livro.curso-r.com/](https://livro.curso-r.com/)
+
+- Nosso blog: [https://curso-r.com/blog/](https://curso-r.com/blog/)
+
+## Dúvidas
+
+Fora do horário de aula ou monitoria:
+
+- perguntas gerais sobre o curso deverão ser feitas no Classroom.
+
+- perguntas sobre R, principalmente as que envolverem código, deverão ser enviadas no [nosso fórum](https://discourse.curso-r.com/).
+
+## Slides
+
+```{r}
+tibble::tibble(
+  slide = CursoRutils:::list_github_files(main_repo, "slides/", "html"),
+  link = paste0("https://curso-r.github.io/", main_repo, "/", slide),
+  pdf = stringr::str_replace(paste0("https://curso-r.github.io/", main_repo, "/", slide), "html$", "pdf")
+) %>% 
+  dplyr::filter(!stringr::str_detect(slide, "_files/")) %>% 
+  knitr::kable()
+```
+
+## Scripts utilizados em aula
+
+Aqui colocamos scripts utilizados em aula que são novos ou que são versões modificadas do material básico da aula.
+
+```{r}
+pasta <- "exemplos_de_aula/"
+tibble::tibble(
+  script = list.files(pasta, pattern = ".R"),
+  link = paste0("https://curso-r.github.io/", turma, "/", pasta, script)
+) %>% 
+  knitr::kable()
+```
+
+
+## Lição de casa
+
+```{r}
+tibble::tibble(
+  nome = CursoRutils:::list_github_files(main_repo, "exercicios/"),
+  link = paste0("https://curso-r.github.io/", main_repo, "/", nome)
+) %>%
+  dplyr::filter(as.numeric(stringr::str_extract(nome, "[0-9]{2}")) <= num_aula) %>% 
+  knitr::kable()
+```
+
+## Trabalho final
+
+(em breve)
+
+## Trabalhos finais premiados
+
+(em breve)
+
+## Material extra
+
+Referências extras comentadas nas aulas.
+
+```{r, message=FALSE}
+googlesheets4::gs4_deauth()
+"1SmCKCvJBff3CVty-xYKJ4NhEo2j6sUwkdET46vQisDY" %>% 
+  googledrive::as_id() %>% 
+  googlesheets4::read_sheet(turma) %>%
+  dplyr::filter(aula <= num_aula) %>% 
+  dplyr::mutate(link = glue::glue("[{desc}]({utils::URLencode(url)})")) %>%
+  dplyr::select(-desc, -url) %>%
+  dplyr::arrange(aula) %>% 
+  knitr::kable(col.names = c("Aula", "Tema", "Descrição"))
+```
+
+
+## Dados
+
+```{r}
+pasta <- "dados/"
+tibble::tibble(
+  nome = list.files(
+    pasta, 
+    recursive = TRUE, 
+    pattern = "\\.(zip|Rds|rds|xlsx|xls|csv|json)"
+  ),
+  link = purrr::map_chr(
+    paste0("https://curso-r.github.io/", turma, "/", pasta, nome),
+    utils::URLencode
+  )
+) %>% 
+  knitr::kable()
+```
+
+
+## Redes sociais da Curso-R
+
+Instagram: https://www.instagram.com/cursoo_r/
+
+Twitter: https://twitter.com/curso_r
+
+Youtube: https://www.youtube.com/c/CursoR6/featured
+
+Linkedin: https://www.linkedin.com/company/curso-r/
+
+Facebook: https://www.facebook.com/cursodeR
+
+

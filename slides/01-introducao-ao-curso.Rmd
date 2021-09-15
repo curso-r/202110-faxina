@@ -1,0 +1,252 @@
+---
+title: "Faxina de dados"
+author: "<img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>"
+date: ""
+output:
+  xaringan::moon_reader:
+    css: ["default", "default-fonts", "css/custom-intro.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+knit: pagedown::chrome_print
+---
+
+```{r, child="00-preamble.Rmd"}
+
+```
+
+class: middle, center
+
+# Sobre a Curso-R
+
+---
+
+class: middle, center
+
+## A empresa
+
+.pull-left[
+```{r, echo = FALSE}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/295643c6243701ae6a9bac3fb8ad467ff0ce3c84/d1785/img/logo/cursor1-41.png")
+```
+
+<br>
+<br>
+
+```{r, echo = FALSE}
+knitr::include_graphics("img/logo_r6.png")
+```
+
+]
+
+.pull-right[
+```{r, echo = FALSE}
+knitr::include_graphics("img/produtos.png")
+```
+]
+
+### [www.curso-r.com](https://www.curso-r.com)
+
+---
+
+## Ministrantes
+
+.pull-left[
+
+### Julio Trecenti
+
+```{r, echo=FALSE, out.width="30%"}
+knitr::include_graphics("img/jtrecenti.png")
+```
+
+
+Doutorando em Estatística pelo IME-USP. Diretor da Associação Brasileira de Jurimetria (ABJ). Professor auxiliar no Insper. 
+
+Trabalha com web scraping, arrumação de dados, modelos preditivos, APIs, pacotes em R e dashboards em Shiny.
+
+]
+
+
+.pull-right[
+
+### Fernando Corrêa
+
+```{r, echo=FALSE, out.width="30%"}
+knitr::include_graphics("img/fernando.jpeg")
+```
+
+
+Bacharel e mestrando em Estatística pelo IME-USP. Ex-Diretor da Associação Brasileira de Jurimetria (ABJ). 
+
+Usa R para tudo, mas tem interesse especial em web scraping, visualização de dados e modelagem bayesiana.
+
+
+]
+
+---
+
+## Nossos cursos
+
+```{r, echo = FALSE}
+templatesR6::criar_slide_nossos_cursos()
+```
+
+---
+class: middle, center, inverse
+
+# Sobre o curso
+
+---
+
+# Sobre o curso
+
+A pessoa que trabalha com ciência de dados passa __60-80%__ do tempo na parte de tratamento de dados.
+
+Por isso, trabalhar com os dados sujos da melhor forma possível tem __grande impacto__ na realização dos projetos na prática.
+
+Faxina de dados __não é fácil__. Em parte das situações, o problema não é exatamente técnico, e sim um __problema de negócio__, na fonte geradora dos dados.
+
+O que vamos trabalhar aqui é com __ferramentas úteis__ para leitura e arrumação de dados arrumados. Faremos isso através de vários exemplos.
+
+---
+
+# Faxina no ciclo da ciência de dados
+
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/ciclo-faxina.png")
+```
+
+A faxina de dados também é conhecida como __ETL__ (Extract, Transform, Load). As definições podem variar dependendo do contexto.
+
+---
+
+# Requisitos
+
+Este curso assume que você já possui os conhecimentos do curso de [R para Ciência de Dados II](https://curso-r.com/cursos/r4ds-2/).
+
+Os requisitos mais importantes são: 
+
+- `{purrr}`: todos os tipos de `map()`.
+- `{tidyr}` e `{dplyr}`: funções básicas, integração e pivotagem.
+- `{stringr}`: funções básicas e expressões regulares.
+
+> Se sentir dificuldade em algum ponto que a gente passar rápido, pergunte!
+
+---
+
+class: middle, center, inverse
+
+# Aulas
+
+---
+
+# Dia 01
+
+## Teoria
+
+- Organização de projetos
+- Conceito de *tidy data*
+
+## Exemplos
+
+- Faxina de dados da SSP
+    - Problemas de encoding
+- Faxina de dados em um projeto de consultoria
+
+---
+
+# Dia 02
+
+## Teoria
+
+- Pacote `{janitor}`
+- Funções menos conhecidas do `{dplyr}` e do `{tidyr}`
+- Funções de leitura de dados
+
+## Exemplos
+
+- Faxina de dados em um projeto de consultoria (continuação) 
+- Leitura de dados em outros formatos
+    - PDF e OCR
+    - Json e HTML/XML
+- Leitura de dados grandes 
+    - Dados da RFB ([brasil.io](https://brasil.io))
+
+---
+
+# Dia 03
+
+## Teoria
+
+- Integração de dados
+- Detecção de inconsistências
+
+## Exemplos
+
+- Faxina de dados de reclamações do Sindec (Procon)
+- Fazendo um projeto completo do zero: RFB + Sindec
+- Atividades que não deu tempo de fazer
+
+---
+
+# Resultados
+
+No final, você terá ...
+
+- Conceitos básicos sobre arrumação de dados
+
+- Conhecimento de melhores práticas
+
+- Mais ferramentas para aplicar
+
+- Mais tranquilidade e previsibilidade ao trabalhar com bases desarrumadas
+
+
+---
+
+# Dinâmica
+
+- Vários exemplos práticos por aula
+    - __Foco__: bases públicas, consultoria
+    - Sugira problemas do seu trabalho/pesquisa!
+
+- Exercícios para casa, com entrega facultativa.
+
+- Estaremos online 30 minutos antes das aulas para tirar dúvidas.
+
+- Trabalho final, com entrega obrigatória
+    - As 3 pessoas que fizerem os melhores trabalhos receberão uma __bolsa__ para fazer qualquer curso da Curso-R
+    - O trabalho final será definido na aula 2
+
+---
+
+# Tirando dúvidas
+
+- **Não existe dúvida idiota / básica demais**.
+ 
+- Nem sempre é trivial fazer a pergunta certa para que outra pessoa esclareça a sua dúvida.
+ 
+- Fora do horário de aula ou monitoria:
+  - Perguntas gerais sobre o curso devem ser feitas no Classroom.
+  - Perguntas sobre R, principalmente as que envolverem código, devem ser enviadas no [nosso discourse](https://discourse.curso-r.com/). 
+  - Como os códigos de faxina de dados costumam ser extensos e envolvem dados grandes, tente criar um exemplo reprodutível pequeno do seu problema.
+
+- [Veja aqui dicas de como fazer uma boa pergunta](https://discourse.curso-r.com/t/como-escrever-uma-boa-pergunta/542).
+
+---
+# Por que usar o discourse?
+
+- Muito melhor para escrever textos que possuem códigos. Com ele, podemos usar o pacote `{reprex}`!
+
+- Saber pesquisar sobre erros e fazer a pergunta certa é essencial para aprender e resolver problemas de programação.
+
+- No discourse, teremos mais pessoas acompanhando e respondendo as dúvidas.
+
+- Em um ambiente aberto, as suas dúvidas vão contribuir com a comunidade.
+
+.center[
+### https://discourse.curso-r.com/
+]
+

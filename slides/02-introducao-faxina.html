@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Faxina de dados</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom-intro.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Faxina de dados
+## Introdução à Faxina de dados
+### <img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class: middle, center
+
+# <span style="color:#6495ed; font-weight: bold;">Introdução</span>
+
+---
+# O que é faxina?
+
+**Faxina de dados** é o processo de modificar uma ou mais tabelas até que elas atendam o princípio **tidy**, proposto por Hadley Wickham em um artigo de 2014.
+
+Cada base exigirá uma **Faxina** diferente, pois não existe um único tipo de bagunça:
+
+_Tidy data ~~Happy families~~ are all alike; every untidy data ~~unhappy family~~ is untidy ~~unhappy~~ in its own way (Hadley Wickham ~~Leon Tolstoi~~)_
+
+Nesse curso, vamos cobrir algumas bagunças comuns e exemplos práticos de como resolvê-las.
+
+---
+# Por que faxina é importante?
+
+Dados são o subproduto de muitos processos complexos, administrado por várias pessoas que podem fazer (ou não) usos muito diferentes dos mesmos registros.
+
+Isso faz com que os formatos e convenções de armazenamento de dados sejam muito variados, às vezes chegando a dificultar análises futuras.
+
+Por isso, a Faxina é praticamente uma constante em qualquer contexto de análise de dados, e isso não se deve **só** a erros ou falhas no processo de armazenamento. 
+
+Bancos de dados são usualmente armazenados em formato relacional (não  _tidy_), por exemplo, pois isso reduz o espaço consumido pelas informações.
+
+---
+# O que é um banco de dados **tidy**
+
+ *Tidy data* é um princípio para arrumação de base de dados que resolve 90% dos problemas reais. Uma base tidy satisfaz é **uma única tabela** que satisfaz:
+- Cada observação é uma (e só uma) linha da tabela.
+- Cada variável é uma coluna da tabela. Não existe uma coluna que represente duas variáveis, por exemplo. 
+&lt;!--- Cada representação da **visão principal** da tabela está em uma única célula. --&gt;
+
+Essas definições são interdependentes, a depender do que entendermos por **variável** e **observação**. O que realmente importa é a filosofia por trás das sugestões.
+
+Essa é a definição original proposta anteriormente, mas neste curso vamos considerar algumas propriedades adicionais. Elas não são tão precisas, mas se justificam pela sua grande aplicabilidade:
+
+- Não existem colunas com tipos trocados: datas ou números como texto.
+- As lacunas da base são lacunas verdadeiras. Não existe um "" que na verdade é um valor faltante.
+
+---
+# Relação com outros formatos de armazenamento
+
+O contrário **tidy** não é **messy**. Existem muitos motivos pelos quais você se deparar com dados fora do padrão que vamos adotar neste curso. Os dois principais são:
+
+1. Dados em formato **tidy** não otimizam o uso de espaço no computador. Frequentemente nós acabamos criando linhas novas para deixar uma tabela **tidy** e isso pode acabar fazendo o computador armazenas colunas muito maiores.
+
+2. Dados em formato **tidy** podem não ser os melhores para fazer consultas. O formato **tidy** nos ajuda a gastar menos tempo fazendo as nossas análises, mas pode dificultar a vida de quem precisa consultar os mesmos dados que vamos analisar.
+
+Por esses dois motivos, lembre-se: o contrário de **tidy** não é **messy**. Em muitas situações falta cuidado com o armazenamento dos dados e de fato podemos falar em **BAGUNÇA**, mas em muitas outras os dados são **untidy** por algum bom motivo.
+
+---
+# Exemplo de dado **untidy**
+
+Casos de tuberculose em três países de 1999 a 2000:
+
+
+|pais        |   1999|   2000|
+|:-----------|------:|------:|
+|Afeganistão |    745|   2666|
+|Brasil      |  37737|  80488|
+|China       | 212258| 213766|
+
+Porque não é **tidy**:
+
+- As colunas "1999", "2000" representam uma variável numérica (**casos**), mas isso não aparece na tabela.
+- As **observações** são 6: uma para cada país em cada ano. As qualificações dessas observações, o **ano** e o **pais** em que elas foram feitas, não aparecem na base: falta uma coluna com os **casos**
+
+---
+# Versão **tidy**
+
+
+|pais        |  ano|  casos|
+|:-----------|----:|------:|
+|Afeganistão | 1999|    745|
+|Afeganistão | 2000|   2666|
+|Brasil      | 1999|  37737|
+|Brasil      | 2000|  80488|
+|China       | 1999| 212258|
+|China       | 2000| 213766|
+
+---
+# Exemplo de dado **untidy**
+
+.pull-left[
+
+Casos de tuberculose em três países de 1999 a 2000:
+
+
+|pais        |   1999|   2000|
+|:-----------|------:|------:|
+|Afeganistão |    745|   2666|
+|Brasil      |  37737|  80488|
+|China       | 212258| 213766|
+]
+
+.pull-right[
+
+População em três países de 1999 a 2000:
+
+
+|pais        |       1999|       2000|
+|:-----------|----------:|----------:|
+|Afeganistão |   19987071|   20595360|
+|Brasil      |  172006362|  174504898|
+|China       | 1272915272| 1280428583|
+
+]
+
+
+Porque não é **tidy**:
+
+- Além dos problemas anteriores, as informações estão espalhadas em várias tabelas.
+
+---
+# Versão **tidy**
+
+
+|pais        |  ano|  casos|  populacao|
+|:-----------|----:|------:|----------:|
+|Afeganistão | 1999|    745|   19987071|
+|Afeganistão | 2000|   2666|   20595360|
+|Brasil      | 1999|  37737|  172006362|
+|Brasil      | 2000|  80488|  174504898|
+|China       | 1999| 212258| 1272915272|
+|China       | 2000| 213766| 1280428583|
+---
+
+# Tipos de problemas mais comuns
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Erro &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solução &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Função no R &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Uma variável separada em várias colunas &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transformar viárias colunas em uma e empilhar linhas &lt;/td&gt;
+   &lt;td style="text-align:left;width: 50px; "&gt; tidyr::pivot_longer &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Informação espalhada em várias tabelas &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Juntas as tabelas pelo valor de uma coluna &lt;/td&gt;
+   &lt;td style="text-align:left;width: 50px; "&gt; dplyr::xxx_join &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Variáveis diferentes empilhadas como linhas &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transformar as linhas repetidas em colunas &lt;/td&gt;
+   &lt;td style="text-align:left;width: 50px; "&gt; tidyr::pivot_wider &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Uma tabela fruto de muitos joins &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Separar as subtabelas e transformar informações repetidas em uma única cela &lt;/td&gt;
+   &lt;td style="text-align:left;width: 50px; "&gt; tidyr::nest() - tidyr::unnest() - dplyr::group_by()+dplyr::summarise() &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Organização de projetos
+
+A organização de projetos varia muito conforme as necessidades gosto pessoal.
+
+Em geral, recomendamos utilizar a estrutura de __pacotes__. 
+
+Vantagens em utilizar pacotes para desenvolver projetos:
+
+- Você não precisa se preocupar com a organização de pastas
+- Mais fácil de transferir para outras pessoas
+- Você ganha ferramentas úteis como `{usethis}` e `{devtools}`
+
+---
+
+# Faxina de dados em pacotes
+
+- A parte de faxina de dados de um pacote fica na pasta `data-raw/`
+- É facilitado pela função `usethis::use_data_raw()`.
+- A ideia é que, depois que seus dados brutos são arrumados, você salve os dados arrumados na sua pasta `data/`, utilizando `usethis::use_data(dados_arrumados)`. Faremos exemplos disso.
+- Esse é seu playground, e não existe uma regra fixa para organizar seus arquivos aqui.
+- Tome cuidado, pois pode bagunçar rapidamente.
+    - Uma sugestão é colocar prefixos nos nomes dos arquivos, de acordo com a ordem que você roda. Por exemplo: `01-download.R`, `02-leitura.R`, `03-limpeza.R`, `04-prepacao-modelagem.R`.
+    - Se você quiser uma forma mais robusta para isso, veja o pacote [`{targets}`](https://github.com/ropensci/targets). Este pacote está fora do escopo do curso.
+
+
+---
+
+# Cuidados com dados grandes
+
+- Pacotes e repositórios do GitHub são melhores amigos. Utilize sempre que puder.
+- Dados grandes e GitHub não são melhores amigos. Evite colocar arquivos de mais de 20mb no seu repositório. 
+- Você até pode colocar os arquivos na sua pasta `data-raw/`, mas coloque também no `.gitignore` para não subir para o GitHub acidentalmente.
+
+- Algumas alternativas para guardar dados brutos
+    - Adquirir um servidor e desenvolva com sua equipe por lá
+    - Utilizar `git-lfs` (avançado)
+    - Utilizar pastas na nuvem (dropbox, drive etc)
+    - ...
+
+---
+
+# Outras dicas práticas
+
+- Salve resultados intermediários em arquivos `.rds`. São mais fáceis de transportar e não dão problema de leitura no R.
+- Se seu projeto envolve códigos de `python`, considere o formato `.feather`.
+- Os nomes dos arquivos de dados precisam ser expressivos. Uma sugestão é salvá-lo com o mesmo nome do arquivo que gerou a base de dados.
+
+---
+
+# Vamos ao R!
+
+&lt;img src="img/cat.gif" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
