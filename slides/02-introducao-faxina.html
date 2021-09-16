@@ -4,7 +4,7 @@
     <title>Faxina de dados</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.8/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
@@ -58,7 +58,7 @@ Nesse curso, vamos cobrir algumas bagunças comuns e exemplos práticos de como 
 
 Dados são o subproduto de muitos processos complexos, administrado por várias pessoas que podem fazer (ou não) usos muito diferentes dos mesmos registros.
 
-Isso faz com que os formatos e convenções de armazenamento de dados sejam muito variados, às vezes chegando a dificultar análises futuras.
+Isso faz com que os formatos e convenções de armazenamento de dados sejam muito variados, às vezes dificultando chegando a dificultar análises futuras.
 
 Por isso, a Faxina é praticamente uma constante em qualquer contexto de análise de dados, e isso não se deve **só** a erros ou falhas no processo de armazenamento. 
 
@@ -67,14 +67,14 @@ Bancos de dados são usualmente armazenados em formato relacional (não  _tidy_)
 ---
 # O que é um banco de dados **tidy**
 
- *Tidy data* é um princípio para arrumação de base de dados que resolve 90% dos problemas reais. Uma base tidy satisfaz é **uma única tabela** que satisfaz:
+ *Tidy data* é um princípio para arrumação de base de dados que resolve 90% dos problemas reais. Uma base tidy é **uma única tabela** que satisfaz:
 - Cada observação é uma (e só uma) linha da tabela.
 - Cada variável é uma coluna da tabela. Não existe uma coluna que represente duas variáveis, por exemplo. 
 &lt;!--- Cada representação da **visão principal** da tabela está em uma única célula. --&gt;
 
 Essas definições são interdependentes, a depender do que entendermos por **variável** e **observação**. O que realmente importa é a filosofia por trás das sugestões.
 
-Essa é a definição original proposta anteriormente, mas neste curso vamos considerar algumas propriedades adicionais. Elas não são tão precisas, mas se justificam pela sua grande aplicabilidade:
+Além disso, essa é a definição original proposta anteriormente, mas neste curso vamos considerar algumas propriedades adicionais. Elas não são tão precisas, mas se justificam pela sua grande aplicabilidade:
 
 - Não existem colunas com tipos trocados: datas ou números como texto.
 - As lacunas da base são lacunas verdadeiras. Não existe um "" que na verdade é um valor faltante.
@@ -82,7 +82,7 @@ Essa é a definição original proposta anteriormente, mas neste curso vamos con
 ---
 # Relação com outros formatos de armazenamento
 
-O contrário **tidy** não é **messy**. Existem muitos motivos pelos quais você se deparar com dados fora do padrão que vamos adotar neste curso. Os dois principais são:
+O contrário **tidy** não é **messy**. Existem muitos motivos pelos quais você pode se deparar com dados fora do padrão que vamos adotar neste curso. Os dois principais são:
 
 1. Dados em formato **tidy** não otimizam o uso de espaço no computador. Frequentemente nós acabamos criando linhas novas para deixar uma tabela **tidy** e isso pode acabar fazendo o computador armazenas colunas muito maiores.
 
@@ -180,7 +180,7 @@ Porque não é **tidy**:
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Uma variável separada em várias colunas &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Transformar viárias colunas em uma e empilhar linhas &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transformar várias colunas em uma e empilhar linhas &lt;/td&gt;
    &lt;td style="text-align:left;width: 50px; "&gt; tidyr::pivot_longer &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -205,7 +205,7 @@ Porque não é **tidy**:
 
 # Organização de projetos
 
-A organização de projetos varia muito conforme as necessidades gosto pessoal.
+A organização de projetos varia muito conforme as necessidades e gosto pessoal.
 
 Em geral, recomendamos utilizar a estrutura de __pacotes__. 
 
