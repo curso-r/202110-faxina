@@ -56,9 +56,10 @@ Fora do horário de aula ou monitoria:
 Aqui colocamos scripts utilizados em aula que são novos ou que são
 versões modificadas do material básico da aula.
 
-| script                   | link                                                                              |
-|:-------------------------|:----------------------------------------------------------------------------------|
-| 01-exemplo\_ssp\_micro.R | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro.R> |
+| script                                 | link                                                                                          |
+|:---------------------------------------|:----------------------------------------------------------------------------------------------|
+| 01-exemplo\_ssp\_micro.R               | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro.R>             |
+| 01-exemplo\_ssp\_micro\_live\_coding.R | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro_live_coding.R> |
 
 ## Lição de casa
 

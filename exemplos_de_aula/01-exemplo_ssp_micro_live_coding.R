@@ -189,7 +189,8 @@ crimes_passo2c <- crimes_passo1 %>%
 # Construção da tabela final ----------------------------------------------
 
 base_final_tidy <- carros %>% 
-  dplyr::left_join(ocorrencias, by = c("placa_veiculo", "uf_veiculo", "cidade_veiculo", "descr_cor_veiculo", 
+  dplyr::left_join(ocorrencias, by = c("placa_veiculo", "uf_veiculo",
+                                       "cidade_veiculo", "descr_cor_veiculo", 
                                        "descr_marca_veiculo", "ano_fabricacao")) %>% 
   dplyr::left_join(crimes_passo2c)
 
