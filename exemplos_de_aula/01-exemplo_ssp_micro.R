@@ -3,7 +3,6 @@
 library(tidyverse)
 library(readxl)
 
-
 # Ler dados ---------------------------------------------------------------
 
 # dados obtidos aqui http://www.ssp.sp.gov.br/transparenciassp/Consulta.aspx
