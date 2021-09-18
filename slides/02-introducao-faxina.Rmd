@@ -43,7 +43,7 @@ Nesse curso, vamos cobrir algumas bagunças comuns e exemplos práticos de como 
 
 Dados são o subproduto de muitos processos complexos, administrado por várias pessoas que podem fazer (ou não) usos muito diferentes dos mesmos registros.
 
-Isso faz com que os formatos e convenções de armazenamento de dados sejam muito variados, às vezes chegando a dificultar análises futuras.
+Isso faz com que os formatos e convenções de armazenamento de dados sejam muito variados, às vezes dificultando chegando a dificultar análises futuras.
 
 Por isso, a Faxina é praticamente uma constante em qualquer contexto de análise de dados, e isso não se deve **só** a erros ou falhas no processo de armazenamento. 
 
@@ -52,14 +52,14 @@ Bancos de dados são usualmente armazenados em formato relacional (não  _tidy_)
 ---
 # O que é um banco de dados **tidy**
 
- *Tidy data* é um princípio para arrumação de base de dados que resolve 90% dos problemas reais. Uma base tidy satisfaz é **uma única tabela** que satisfaz:
+ *Tidy data* é um princípio para arrumação de base de dados que resolve 90% dos problemas reais. Uma base tidy é **uma única tabela** que satisfaz:
 - Cada observação é uma (e só uma) linha da tabela.
 - Cada variável é uma coluna da tabela. Não existe uma coluna que represente duas variáveis, por exemplo. 
 <!--- Cada representação da **visão principal** da tabela está em uma única célula. -->
 
 Essas definições são interdependentes, a depender do que entendermos por **variável** e **observação**. O que realmente importa é a filosofia por trás das sugestões.
 
-Essa é a definição original proposta anteriormente, mas neste curso vamos considerar algumas propriedades adicionais. Elas não são tão precisas, mas se justificam pela sua grande aplicabilidade:
+Além disso, essa é a definição original proposta anteriormente, mas neste curso vamos considerar algumas propriedades adicionais. Elas não são tão precisas, mas se justificam pela sua grande aplicabilidade:
 
 - Não existem colunas com tipos trocados: datas ou números como texto.
 - As lacunas da base são lacunas verdadeiras. Não existe um "" que na verdade é um valor faltante.
@@ -67,7 +67,7 @@ Essa é a definição original proposta anteriormente, mas neste curso vamos con
 ---
 # Relação com outros formatos de armazenamento
 
-O contrário **tidy** não é **messy**. Existem muitos motivos pelos quais você se deparar com dados fora do padrão que vamos adotar neste curso. Os dois principais são:
+O contrário **tidy** não é **messy**. Existem muitos motivos pelos quais você pode se deparar com dados fora do padrão que vamos adotar neste curso. Os dois principais são:
 
 1. Dados em formato **tidy** não otimizam o uso de espaço no computador. Frequentemente nós acabamos criando linhas novas para deixar uma tabela **tidy** e isso pode acabar fazendo o computador armazenas colunas muito maiores.
 
@@ -143,7 +143,7 @@ dados::tabela1 %>%
 
 tibble::tibble(
   Erro = c("Uma variável separada em várias colunas", "Informação espalhada em várias tabelas", "Variáveis diferentes empilhadas como linhas", "Uma tabela fruto de muitos joins"),
-  `Solução` =  c("Transformar viárias colunas em uma e empilhar linhas", "Juntas as tabelas pelo valor de uma coluna", "Transformar as linhas repetidas em colunas", "Separar as subtabelas e transformar informações repetidas em uma única cela"),
+  `Solução` =  c("Transformar várias colunas em uma e empilhar linhas", "Juntas as tabelas pelo valor de uma coluna", "Transformar as linhas repetidas em colunas", "Separar as subtabelas e transformar informações repetidas em uma única cela"),
   `Função no R` =  c("tidyr::pivot_longer", "dplyr::xxx_join", "tidyr::pivot_wider", "tidyr::nest() - tidyr::unnest() - dplyr::group_by()+dplyr::summarise()")
 ) %>% 
   knitr::kable(format = "html") %>% 
@@ -155,7 +155,7 @@ tibble::tibble(
 
 # Organização de projetos
 
-A organização de projetos varia muito conforme as necessidades gosto pessoal.
+A organização de projetos varia muito conforme as necessidades e gosto pessoal.
 
 Em geral, recomendamos utilizar a estrutura de __pacotes__. 
 
