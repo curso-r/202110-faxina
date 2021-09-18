@@ -137,6 +137,19 @@ crimes_passo2c <- crimes_passo1 %>%
 
 base_final_tidy <- carros %>%
   dplyr::left_join(ocorrencias, by = c("num_bo", "ano_bo", "delegacia_nome")) %>%
-  dplyr::left_join(crimes_passo2a, by = c("num_bo", "ano_bo", "delegacia_nome"))
+  dplyr::left_join(crimes_passo2a, by = c("num_bo", "ano_bo", "delegacia_nome")) %>% 
+  dplyr::mutate(
+    bo_iniciado = lubridate::dmy_hms(bo_iniciado),
+    bo_emitido = lubridate::dmy_hms(bo_emitido),
+    dataelaboracao = lubridate::dmy_hms(dataelaboracao),
+    dataocorrencia = lubridate::dmy(dataocorrencia),
+    datacomunicacao = lubridate::dmy(datacomunicacao),
+    horaocorrencia = lubridate::hm(horaocorrencia)
+  )
+
+# as colunas de datas deveriam ser do tipo, date, POSIXCt (date time) etc. Exemplos:
+# base_final_tidy %>% with(bo_emitido) %>% class()
+# base_final_tidy %>% with(data_ocorrencia) %>% class()
+
 
 tibble::view(base_final_tidy)

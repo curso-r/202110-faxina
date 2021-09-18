@@ -56,8 +56,9 @@ Fora do horário de aula ou monitoria:
 Aqui colocamos scripts utilizados em aula que são novos ou que são
 versões modificadas do material básico da aula.
 
-| script | link |
-|:-------|:-----|
+| script                   | link                                                                              |
+|:-------------------------|:----------------------------------------------------------------------------------|
+| 01-exemplo\_ssp\_micro.R | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro.R> |
 
 ## Lição de casa
 
@@ -85,8 +86,10 @@ Referências extras comentadas nas aulas.
 
 ## Dados
 
-| nome | link |
-|:-----|:-----|
+| nome                                               | link                                                                                                  |
+|:---------------------------------------------------|:------------------------------------------------------------------------------------------------------|
+| DadosBO\_2021\_3(ROUBO DE VEÍCULOS))\_completa.xls | <https://curso-r.github.io/202110-faxina/dados/DadosBO_2021_3(ROUBO%20DE%20VE%CDCULOS))_completa.xls> |
+| DadosBO\_2021\_3(ROUBO DE VEÍCULOS).xls            | <https://curso-r.github.io/202110-faxina/dados/DadosBO_2021_3(ROUBO%20DE%20VE%CDCULOS).xls>           |
 
 ## Redes sociais da Curso-R
 
