@@ -27,7 +27,7 @@ base_bruta <- readr::read_delim("dados/DadosBO_2021_3(ROUBO DE VEÍCULOS))_compl
                                 delim = "\t",
                                 locale = readr::locale(encoding = "UTF-16LE"))
 
-base_bruta <- read.delim("dados/DadosBO_2021_3(ROUBO DE VEÍCULOS))_completa.xls",
+base_bruta <- utils::read.delim("dados/DadosBO_2021_3(ROUBO DE VEÍCULOS))_completa.xls",
                          sep = "\t", stringsAsFactors = FALSE,
                          fileEncoding = "UTF-16LE") %>% 
   as_tibble()
@@ -142,15 +142,37 @@ base_nomes_arrumados_preenchida %>%
 ## ocorrencias
 
 ocorrencias <- base_nomes_arrumados_preenchida %>% 
+  dplyr::mutate(
+    dataocorrencia = lubridate::dmy(dataocorrencia),
+    datacomunicacao = lubridate::dmy(datacomunicacao),
+    dataelaboracao = lubridate::dmy_hms(dataelaboracao),
+    bo_emitido = lubridate::dmy_hms(bo_emitido)) |> 
   dplyr::select(ano_bo:delegacia_circunscricao,
                 placa_veiculo:ano_fabricacao) %>% 
-  dplyr::distinct()
+  dplyr::distinct()  |> 
+  dplyr::group_by(across(placa_veiculo:ano_fabricacao)) |> 
+  dplyr::mutate(
+    bos_duplicados = paste0(numero_boletim, collapse = ", ")
+  ) |> 
+  dplyr::filter(
+    (dataelaboracao == max(dataelaboracao)) &
+    (datacomunicacao == max(datacomunicacao)) &
+    (bo_emitido == max(bo_emitido))
+  )
+
+ocorrencias |> 
+  count(across(placa_veiculo:ano_fabricacao)) |> 
+  ungroup() |> 
+  filter(n > 1)
 
 ## crimes
 
 carros <- base_nomes_arrumados_preenchida %>% 
   dplyr::select(placa_veiculo:ano_fabricacao) %>% 
   dplyr::distinct()
+
+# carros |> 
+#   left_join(ocorrencias)
 
 crimes_passo1 <- base_nomes_arrumados_preenchida %>% 
   dplyr::select(num_bo, ano_bo, delegacia_nome, delegacia_circunscricao,
@@ -186,12 +208,29 @@ crimes_passo2c <- crimes_passo1 %>%
   dplyr::group_by(num_bo, ano_bo, delegacia_nome, delegacia_circunscricao) %>% 
   tidyr::nest()
 
+# processa_data <- function(tabela){
+#   tabela$crime_completo[1]
+# }
+# 
+# crimes_passo2c |> 
+#   mutate(
+#     data_resumida = purrr::map_chr(data, processa_data)
+#   )
+
 # Construção da tabela final ----------------------------------------------
 
 base_final_tidy <- carros %>% 
   dplyr::left_join(ocorrencias, by = c("placa_veiculo", "uf_veiculo",
                                        "cidade_veiculo", "descr_cor_veiculo", 
                                        "descr_marca_veiculo", "ano_fabricacao")) %>% 
-  dplyr::left_join(crimes_passo2c)
-
+  dplyr::left_join(crimes_passo2c) |> 
+  dplyr::select(-ano_bo, -num_bo) |> 
+  dplyr::mutate(
+    bo_iniciado = lubridate::dmy_hms(bo_iniciado),
+    datacomunicacao = lubridate::dmy(datacomunicacao),
+    horaocorrencia2 = lubridate::hm(horaocorrencia)
+  ) |> 
+  dplyr::mutate(
+    endereco_completo = str_glue("{logradouro}, {numero}, {bairro}, {cidade}, {uf}")
+  ) 
   
