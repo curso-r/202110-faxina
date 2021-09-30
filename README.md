@@ -56,13 +56,17 @@ Fora do horário de aula ou monitoria:
 Aqui colocamos scripts utilizados em aula que são novos ou que são
 versões modificadas do material básico da aula.
 
-| script | link |
-|:-------|:-----|
+| script                                 | link                                                                                          |
+|:---------------------------------------|:----------------------------------------------------------------------------------------------|
+| 01-exemplo\_ssp\_micro.R               | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro.R>             |
+| 01-exemplo\_ssp\_micro\_live\_coding.R | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro_live_coding.R> |
 
 ## Lição de casa
 
-| nome | link |
-|:-----|:-----|
+| nome                      | link                                                              |
+|:--------------------------|:------------------------------------------------------------------|
+| exercicios/01-exercicio.R | <https://curso-r.github.io/main-faxina/exercicios/01-exercicio.R> |
+| exercicios/02-exercicio.R | <https://curso-r.github.io/main-faxina/exercicios/02-exercicio.R> |
 
 ## Trabalho final
 
@@ -76,17 +80,29 @@ versões modificadas do material básico da aula.
 
 Referências extras comentadas nas aulas.
 
-| Aula | Tema        | Descrição                                                                                                           |
-|-----:|:------------|:--------------------------------------------------------------------------------------------------------------------|
-|    0 | organizacao | [Pacote targets para organização de projetos](https://docs.ropensci.org/targets/)                                   |
-|    0 | organizacao | [Livro sobre pacote targets](https://books.ropensci.org/targets/)                                                   |
-|    0 | organizacao | [Pacote drake (que foi substituído pelo targets)](https://docs.ropensci.org/drake/)                                 |
-|    0 | janitor     | [Pacote janitor no livro da curso-r](https://livro.curso-r.com/11-1-arrumando-banco-de-dados-o-pacote-janitor.html) |
+| Aula | Tema        | Descrição                                                                                                                            |
+|-----:|:------------|:-------------------------------------------------------------------------------------------------------------------------------------|
+|    0 | organizacao | [Pacote targets para organização de projetos](https://docs.ropensci.org/targets/)                                                    |
+|    0 | organizacao | [Livro sobre pacote targets](https://books.ropensci.org/targets/)                                                                    |
+|    0 | organizacao | [Pacote drake (que foi substituído pelo targets)](https://docs.ropensci.org/drake/)                                                  |
+|    0 | janitor     | [Pacote janitor no livro da curso-r](https://livro.curso-r.com/11-1-arrumando-banco-de-dados-o-pacote-janitor.html)                  |
+|    1 | organizacao | [Slides de pacotes](https://curso-r.github.io/main-pacotes/slides/index.html)                                                        |
+|    1 | organizacao | [Livro Zen do R](https://curso-r.github.io/zen-do-r/)                                                                                |
+|    1 | organizacao | [Livro R Packages](https://r-pkgs.org/)                                                                                              |
+|    1 | leitura     | [Tentar achar o encoding](https://readr.tidyverse.org/reference/encoding.html)                                                       |
+|    1 | exemplo     | [Exemplo de pacote](https://github.com/jtrecenti/vacinaBrasil)                                                                       |
+|    1 | leitura     | [Artigo do Hadley sobre Tidy Data](https://www.jstatsoft.org/article/view/v059i10)                                                   |
+|    2 | exemplo     | [Exemplo de pacote com automação](https://github.com/abjur/falrec)                                                                   |
+|    2 | organizacao | [Exemplo de documentação de dados](https://r-pkgs.org/data.html#documenting-data)                                                    |
+|    2 | leitura     | [Como instalar o rJava](https://cimentadaj.github.io/blog/2018-05-25-installing-rjava-on-windows-10/installing-rjava-on-windows-10/) |
 
 ## Dados
 
-| nome | link |
-|:-----|:-----|
+| nome                                               | link                                                                                                  |
+|:---------------------------------------------------|:------------------------------------------------------------------------------------------------------|
+| DadosBO\_2021\_3(ROUBO DE CELULAR).xls             | <https://curso-r.github.io/202110-faxina/dados/DadosBO_2021_3(ROUBO%20DE%20CELULAR).xls>              |
+| DadosBO\_2021\_3(ROUBO DE VEÍCULOS))\_completa.xls | <https://curso-r.github.io/202110-faxina/dados/DadosBO_2021_3(ROUBO%20DE%20VE%CDCULOS))_completa.xls> |
+| DadosBO\_2021\_3(ROUBO DE VEÍCULOS).xls            | <https://curso-r.github.io/202110-faxina/dados/DadosBO_2021_3(ROUBO%20DE%20VE%CDCULOS).xls>           |
 
 ## Redes sociais da Curso-R
 
