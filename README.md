@@ -60,6 +60,10 @@ versões modificadas do material básico da aula.
 |:---------------------------------------|:----------------------------------------------------------------------------------------------|
 | 01-exemplo\_ssp\_micro.R               | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro.R>             |
 | 01-exemplo\_ssp\_micro\_live\_coding.R | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/01-exemplo_ssp_micro_live_coding.R> |
+| 02-consultoria.R                       | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/02-consultoria.R>                   |
+| 03-funcoes.R                           | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/03-funcoes.R>                       |
+| 04-pdf-pdftools.R                      | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/04-pdf-pdftools.R>                  |
+| 05-pdf-tabulizer.R                     | <https://curso-r.github.io/202110-faxina/exemplos_de_aula/05-pdf-tabulizer.R>                 |
 
 ## Lição de casa
 
@@ -95,6 +99,7 @@ Referências extras comentadas nas aulas.
 |    2 | exemplo     | [Exemplo de pacote com automação](https://github.com/abjur/falrec)                                                                   |
 |    2 | organizacao | [Exemplo de documentação de dados](https://r-pkgs.org/data.html#documenting-data)                                                    |
 |    2 | leitura     | [Como instalar o rJava](https://cimentadaj.github.io/blog/2018-05-25-installing-rjava-on-windows-10/installing-rjava-on-windows-10/) |
+|    2 | leitura     | [usando o pacote tsibble](https://robjhyndman.com/hyndsight/tsibbles/)                                                               |
 
 ## Dados
 
