@@ -15,6 +15,9 @@ library(magrittr)
 path_pdf_digital <- "https://cran.r-project.org/web/packages/pdftools/pdftools.pdf"
 browseURL(path_pdf_digital)
 
+httr::GET("https://cran.r-project.org/web/packages/pdftools/pdftools.pdf",
+          httr::write_disk("dados/pdftools.pdf"))
+
 # metadados
 infos <- pdftools::pdf_info(path_pdf_digital)
 infos$keys <- list(infos$keys)
